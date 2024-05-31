@@ -1,0 +1,114 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start; /* cambie aling-item */
+    justify-content: center;
+    padding: 40px 20px 20px 20px; /* Incrementar el padding superior a 40px */
+    background-color: #0D2B3D; /* cambie color Fondo */
+}
+
+form{
+    margin-top: 40px; /*margensuperior*/
+    position: relative;
+    padding: 30px 35px;
+    background: linear-gradient(0deg, #0D2B3D, #0C0F44, #2F0C2C, #6F0B3B, #192265);
+    box-shadow: 0 0 20px #630e6533;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+.close-btn {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    font-size: 25px; 
+    color: #fdfffd; 
+    cursor: pointer; 
+}
+
+.close-btn:hover {
+    color: #5a158c; 
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+h1{
+    color: #fdfffd;
+    font-size: 28px;
+}
+
+label{
+    color: #fdfffd;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input, textarea{
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background-color: #c6abe0;
+    border: 1px solid #5a158c;
+    color: #fdfffd;
+    outline: none;
+    font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #29159133;
+}
+
+textarea {
+    resize: none;
+}
+
+.form-txt{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.form-txt a{
+    color: #ca8ed8;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn{
+    font-size: 16px;
+    color: #fdfffd;
+    border: 0;
+    border-radius: 15px;
+    background-color: #5a158c;
+    box-shadow: 0 0 10px rgb(30,21,44);
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.btn:hover {
+    background-color: rgb(30,21,44);
+}
+
+@media(max-width: 991px){
+    form{
+        padding: 30px 20px;
+        width: 100%;
+    }
+
+    input, textarea{
+        padding: 10px;
+    }
+
+    .btn{
+        padding: 10px;
+    }
+}
