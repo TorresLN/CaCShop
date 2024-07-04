@@ -41,7 +41,7 @@ const crearProductoGrid = (producto) => {
 
     img.setAttribute('src', producto.img);
     img.setAttribute('alt', `img-${producto.titulo}`);
-    enlace.setAttribute('href', `/producto.html?id=${producto.id}`);
+    enlace.setAttribute('href', `producto.html?id=${producto.id}`);
     enlace.append(img);
     
     p.textContent = producto.titulo;
