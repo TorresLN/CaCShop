@@ -285,7 +285,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(/assets/img/fondos/programmer-dark.jpg);
+  background: url(../img/fondos/programmer-dark.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
