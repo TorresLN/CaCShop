@@ -11,3 +11,12 @@ CREATE TABLE IF NOT EXISTS productos(
     cantidad INT NOT NULL,
     destacado TINYINT(1) NOT NULL DEFAULT 0
 );
+
+CREATE TABLE contactos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    telefono VARCHAR(15),
+    email VARCHAR(100),
+    mensaje TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
