@@ -1,13 +1,14 @@
+URL_BACKEND_STATIC = 'http://127.0.0.1:5000/static/img/';
+
 const novedades = document.getElementById('grid-novedades');
 
 const inicarNovedades = () => {
     // Cargamos los productos de nuestra "Base" 
-    getProductosAll()
+    getProductosDestacados()
         .then(data => {
-            let productosAll =  [...data];
-            let producto = getProductosNovedades(productosAll);
+            let productosTodos =  [...data.productos];
             const fragment = document.createDocumentFragment();
-            producto.forEach( p => {
+            productosTodos.forEach( p => {
                 let producto = crearProductoGrid(p);
                 fragment.append(producto);
             });
@@ -16,9 +17,6 @@ const inicarNovedades = () => {
         .catch(error => {
             console.error('Ocurrió un error al obtener los datos:', error);
         });
-        
-        // Iniciamos el carrito con los datos del LocalStorage
-    inicarCarrito();
 }
 
 
@@ -39,7 +37,7 @@ const crearProductoGrid = (producto) => {
     const small = document.createElement('SMALL');
     const enlace = document.createElement('A');
 
-    img.setAttribute('src', producto.img);
+    img.setAttribute('src', `${URL_BACKEND_STATIC}${producto.img}`);
     img.setAttribute('alt', `img-${producto.titulo}`);
     enlace.setAttribute('href', `producto.html?id=${producto.id}`);
     enlace.append(img);

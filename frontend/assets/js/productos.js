@@ -1,4 +1,4 @@
-const PRODUCTOS_API_URL = "./assets/js/api.json";
+const PRODUCTOS_API_URL = "http://127.0.0.1:5000/productos";
 
 const getProductosAll = async () =>{
     return fetch(PRODUCTOS_API_URL) 
@@ -14,13 +14,31 @@ const getProductosAll = async () =>{
     })
 };
 
+const getProductosDestacados = async () =>{
+    return fetch(`${PRODUCTOS_API_URL}?destacados=${true}`) 
+    .then(response => {
+        if(response.ok){
+            return response.json();
+        }else {
+            Promise.reject(response);
+        }
+    })
+    .catch((error)=>{
+        console.error('Error al cargar los datos:', error)
+    })
+};
 
 
-/* Consultas  */
-const getProductoById = (id, productos) => {
-    return productos.filter(producto => producto.id == id)[0];
-}
-
-const getProductosNovedades = (productos) => {
-    return productos.filter(producto => producto.destacado);
+const getProductoById = (id) => {
+    return fetch(`${PRODUCTOS_API_URL}/${id}`) 
+    .then(response => {
+        if(response.ok){
+            return response.json();
+        }else {
+            Promise.reject(response);
+        }
+    })
+    .catch((error)=>{
+        console.error('Error al cargar los datos:', error)
+    })
 }

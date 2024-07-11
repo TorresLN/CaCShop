@@ -6,26 +6,17 @@ const carritoContenido = document.getElementById('carrito-main');
 const carritoVacio = document.getElementById('carrito-vacio');
 const carritoTotal = document.getElementById('carrito-total');
 
-let productos = [];
 let productosDelCarrito = [];
 let carritoIniciado = false;
 const inicar = () => {
-    // Cargamos los productos de nuestra "Base" 
-    getProductosAll()
-        .then(data => {
-            productos =  [...data];
-        })
-        .catch(error => {
-            console.error('Ocurrió un error al obtener los datos:', error);
-        });
-
     // Iniciamos el carrito con los datos del LocalStorage
+    console.log('carritoIniciado',carritoIniciado)
+
     if (!carritoIniciado){
         inicarCarrito();
         carritoIniciado = true;
     }
 }
-
 
 const inicarCarrito = () => {
     // Busco los datos del localStorage
@@ -33,7 +24,9 @@ const inicarCarrito = () => {
         let total = 0;
         // Renderizo cada uno de los productos
         const carrito = JSON.parse(localStorage.getItem('carrito'));
+        console.log('carrito obtenido', carrito)
         carrito.forEach(prod => {
+            console.log('productos del c', prod)
             total +=prod.precio * prod.cantidad;
             renderizarCarrito(prod, false, false, total);
         });
@@ -65,29 +58,39 @@ const abrirCerrarModal = (target) =>{
 const agregarAlCarrito = (id) => {
 
     // Obtengo el producto de la "Base de Datos"
-    let producto = getProductoById(id, productos);
-    let productoExiste = false;
-    // Obtengo el carrito del LocalStorage o un arreglo vacio
-    let productosDelCarrito = localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : [];
-    // Busco el producto en el carrito
-    let prod = productosDelCarrito.find(p => p.id === id);
-    // Se actualiza el producto si existiera o se guarda el nuevo producto
-    if (prod){
-        productoExiste = true;
-        prod.cantidad ++;
-        producto = prod;
-    }else{
-        producto['cantidad'] = 1;
-        productosDelCarrito.push(producto);
-    }
-    // Busco el valor total del carrito
-    let total = localStorage.getItem('carrito-total') ? JSON.parse(localStorage.getItem('carrito-total')) : 0;
-    total += producto.precio;
-    // Guardo el producto en el localstoraje
-    localStorage.setItem('carrito',JSON.stringify(productosDelCarrito));
-    localStorage.setItem('carrito-total',total);
-    // Renderizo el carrito en la pagina
-    renderizarCarrito(producto, productoExiste, false, total);
+    getProductoById(id)
+        .then(data => {
+            let producto = [data.producto][0];
+            let productoExiste = false;
+            // Obtengo el carrito del LocalStorage o un arreglo vacio
+            let productosDelCarrito = localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : [];
+            console.log('productosDelCarrito', productosDelCarrito)
+            // Busco el producto en el carrito
+            let prod = productosDelCarrito.find(p => p.id === id);
+            // Se actualiza el producto si existiera o se guarda el nuevo producto
+            if (prod){
+                productoExiste = true;
+                prod.cantidad ++;
+                producto = prod;
+            }else{
+                producto['cantidad'] = 1;
+                productosDelCarrito.push(producto);
+            }
+            // Busco el valor total del carrito
+            let total = localStorage.getItem('carrito-total') ? localStorage.getItem('carrito-total') : 0;
+            console.log('total', total)
+            total = parseInt(total);
+            console.log('total', total)
+            total += parseInt(producto.precio);
+            // Guardo el producto en el localstoraje
+            localStorage.setItem('carrito',JSON.stringify(productosDelCarrito));
+            localStorage.setItem('carrito-total',total);
+            // Renderizo el carrito en la pagina
+            renderizarCarrito(producto, productoExiste, false, total);
+                })
+        .catch(error => {
+            console.error('Ocurrió un error al obtener los datos:', error);
+        });
 }
 
 const quitarDelCarrito = (id, eliminar) => {
@@ -120,7 +123,9 @@ const quitarDelCarrito = (id, eliminar) => {
 const renderizarCarrito = (producto, existe, borrar, total) =>{
     // Actualizamos el precio del total del carrito
     if(total){
-        carritoTotal.textContent = `$${total.toLocaleString('es-AR')}`;
+        console.log('total', total)
+        console.log(`$${total.toLocaleString('es-AR')}`)
+        carritoTotal.textContent = `$${total}`;
         // Quitamos el texto por defecto cuando no hay productos
         document.getElementsByClassName('carrito-total')[0].style.display = 'block';
         carritoVacio.style.display = 'none';

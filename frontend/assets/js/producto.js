@@ -1,3 +1,4 @@
+URL_BACKEND_STATIC = 'http://127.0.0.1:5000/static/img/';
 /* Obtencion del parametro de URL */
 let producto = null;
 const url =  new URL(window.location);
@@ -12,29 +13,28 @@ const productoDescripcion = document.getElementById('producto-descripcion');
 
 const inicarProducto = (id) => {
     // Cargamos los productos de nuestra "Base" 
-    getProductosAll()
+    getProductoById(id)
         .then(data => {
-            let productosAll =  [...data];
-            let producto = getProductoById(id, productosAll);
+            let producto = [data.producto][0];
+
             /* Colocamos la imagen */
-            productoIMG.setAttribute('src', producto.img);
+            productoIMG.setAttribute('src', `${URL_BACKEND_STATIC}${producto.img}`);
             /* Colocamos el titulo */
             productoTitulo.textContent = producto.titulo;
             /* Colocamos el precio */
             productoPrecio.textContent = `$${producto.precio}`;
             /* Cargamos los colores disponibles */
-            cargarSelects('color', producto.colores);
+            let colores = producto.colores.split(',');
+            cargarSelects('color', colores);
             /* Cargamos los talles disponibles */
-            cargarSelects('talle', producto.talles);
+            let talles = producto.talles.split(',');
+            cargarSelects('talle', talles);
             /* Colocamos la descripcion */
             productoDescripcion.textContent = producto.descripcion;
         })
         .catch(error => {
             console.error('Ocurrió un error al obtener los datos:', error);
         });
-        
-        // Iniciamos el carrito con los datos del LocalStorage
-    inicarCarrito();
 }
 
 const cargarSelects = (id, opciones) => {

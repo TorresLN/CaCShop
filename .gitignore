@@ -1,2 +1,2 @@
-backend/src/config.py
-env/*
+backend/src/app/config.py
+backend/env

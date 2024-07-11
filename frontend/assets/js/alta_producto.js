@@ -1,5 +1,3 @@
-
-
 const preventDefaults = event => {
   event.preventDefault();
   event.stopPropagation();
@@ -75,3 +73,32 @@ function previewFiles(dataRefs) {
     }
   }
 }
+
+const URL = "http://127.0.0.1:5000/"
+
+const formulario = document.getElementById('formulario');
+
+formulario.addEventListener('submit', function (event) {
+  event.preventDefault(); // Evitamos que se envie el form 
+
+  var formData = new FormData(formulario);
+
+  fetch(
+    `${URL}productos`,
+    {
+      method: formulario.method,
+      body: formData
+    }
+  )
+  .then((response) => {
+      if (response.ok) {
+        window.location.replace('/frontend/intranet/admin.html?error=false');
+      } else {
+        window.location.replace('/frontend/intranet/admin.html?error=true');
+        throw new Error('Error al agregar el producto.');
+      }
+  })
+  .catch(function (error) {
+      console.error('Error al agregar el producto.' + error);
+  })
+})
