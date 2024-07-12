@@ -24,7 +24,7 @@ dejo el codigo para que modifiquen porque me genera error el commit auto en git 
 
 <body>
 
-    <form action="http://127.0.0.1:5000/contacto" method="POST">
+    <form action="http://https://fchavez03.pythonanywhere.com//contacto" method="POST">
         <div class="close-btn">&times;</div>
         <h1>CONTACTO</h1>
         <div class="input">
