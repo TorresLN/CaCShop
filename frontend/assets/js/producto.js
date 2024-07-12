@@ -1,4 +1,4 @@
-URL_BACKEND_STATIC = 'http://127.0.0.1:5000/static/img/';
+URL_BACKEND_STATIC = 'https://fchavez03.pythonanywhere.com/static/img/';
 /* Obtencion del parametro de URL */
 let producto = null;
 const url =  new URL(window.location);

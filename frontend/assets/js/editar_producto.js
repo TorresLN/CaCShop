@@ -1,4 +1,4 @@
-const URL_PATH = "http://127.0.0.1:5000/"
+const URL_PATH = "https://fchavez03.pythonanywhere.com/"
 
 let formulario = null;
 

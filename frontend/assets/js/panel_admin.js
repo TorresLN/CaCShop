@@ -22,7 +22,7 @@ const agregarProductos = (data) => {
                 <div class="bg-light border rounded" style="max-height: 200px; max-width: 700px; margin: 1rem auto;" id="contenedor">
                     <div class="row p-2">
                         <div class="col col-sm-4 text-center">
-                            <img src="http://127.0.0.1:5000/static/img/${producto.img}" alt="IMG-Producto-${producto.id}" height="120px">
+                            <img src="https://fchavez03.pythonanywhere.com/static/img/${producto.img}" alt="IMG-Producto-${producto.id}" height="120px">
                         </div>
                         <div class="col col-sm-8">
                             <div class="row">

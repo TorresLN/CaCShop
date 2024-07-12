@@ -1,4 +1,4 @@
-const PRODUCTOS_API_URL = "http://127.0.0.1:5000/productos";
+const PRODUCTOS_API_URL = "https://fchavez03.pythonanywhere.com/productos";
 
 const getProductosAll = async () =>{
     return fetch(PRODUCTOS_API_URL) 

@@ -74,7 +74,7 @@ function previewFiles(dataRefs) {
   }
 }
 
-const URL = "http://127.0.0.1:5000/"
+const URL = "https://fchavez03.pythonanywhere.com/"
 
 const formulario = document.getElementById('formulario');
 
