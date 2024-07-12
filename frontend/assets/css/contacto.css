@@ -5,7 +5,7 @@ body {
     align-items: center; /* Cambiado a center para centrar verticalmente */
     justify-content: center;
     padding: 40px 20px 20px 20px;
-    background-color: #0D2B3D;
+    background-color: hsl(281, 66%, 13%);
     margin: 0; /* Asegurarse de que no hay margen predeterminado */
 }
 
@@ -57,7 +57,7 @@ input, textarea {
     padding: 10px 15px;
     border-radius: 15px;
     margin-bottom: 15px;
-    background-color: #c6abe0;
+    background-color: #cba1f3;
     border: 1px solid #5a158c;
     color: #fdfffd;
     outline: none;
@@ -74,6 +74,33 @@ textarea {
     resize: none;
 }
 
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-check a {
+    color: #d68be7;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.form-check input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    background-color: #d68be7;
+    border-radius: 3px;
+    border: 2px solid #5a158c;
+    margin-left: 10px;
+    margin-top: 12px;
+    flex-shrink: 0;
+}
+
 .form-txt {
     margin-bottom: 20px;
     display: flex;
@@ -82,7 +109,7 @@ textarea {
 }
 
 .form-txt a {
-    color: #ca8ed8;
+    color: #d68be7;
     font-size: 12px;
     font-weight: 600;
     text-decoration: none;
@@ -94,7 +121,7 @@ textarea {
     border: 0;
     border-radius: 15px;
     background-color: #5a158c;
-    box-shadow: 0 0 10px rgb(30, 21, 44);
+    box-shadow: 0 0 10px rgb(44, 21, 25);
     cursor: pointer;
     padding: 10px 15px;
     width: 100%; /* Hacer que el botón ocupe el 100% del ancho del contenedor */
