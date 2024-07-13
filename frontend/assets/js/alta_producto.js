@@ -92,9 +92,9 @@ formulario.addEventListener('submit', function (event) {
   )
   .then((response) => {
       if (response.ok) {
-        window.location.replace('/frontend/intranet/admin.html?error=false');
+        window.location.replace('/intranet/admin.html?error=false');
       } else {
-        window.location.replace('/frontend/intranet/admin.html?error=true');
+        window.location.replace('/intranet/admin.html?error=true');
         throw new Error('Error al agregar el producto.');
       }
   })
